@@ -1,2 +1,25 @@
-<app-home-page></app-home-page>
-<router-outlet></router-outlet>
+<div class="app">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>CarRental</h1>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="app-content">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <div  *ngFor='let page of pagesList'>
+          <a mat-list-item [routerLink]="[pageRoute.get(page)]"> {{page}} </a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
